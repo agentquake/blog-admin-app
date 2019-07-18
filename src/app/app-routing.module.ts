@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './service/auth-guard.service';
+import { LogoutComponent } from './auth/logout.component';
 import {
   NbAuthComponent,
   NbLoginComponent,
@@ -35,7 +36,7 @@ const routes: Routes = [
       },
       {
         path: 'logout',
-        component: NbLogoutComponent,
+        component: LogoutComponent,
       },
       {
         path: 'request-password',

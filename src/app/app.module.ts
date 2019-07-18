@@ -5,8 +5,13 @@ import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HttpClientModule } from '@angular/common/http';
-import { NbPasswordAuthStrategy, NbAuthModule, NbAuthJWTToken } from '@nebular/auth';
+import { LogoutModule } from './auth/logout.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NbPasswordAuthStrategy,
+         NbAuthModule,
+         NbAuthJWTToken,
+         NbAuthJWTInterceptor,
+         NB_AUTH_TOKEN_INTERCEPTOR_FILTER } from '@nebular/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ThemeModule } from './@theme/theme.module';
@@ -21,16 +26,18 @@ import {
   NbSidebarModule,
   NbToastrModule,
   NbWindowModule,
+  NbCardModule,
 } from '@nebular/theme';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     ThemeModule,
     AppRoutingModule,
+    LogoutModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
@@ -48,15 +55,14 @@ import {
       strategies: [
         NbPasswordAuthStrategy.setup({
           name: 'email',
-
+          baseEndpoint: 'http://springboot-aws.arimnh62mr.us-east-2.elasticbeanstalk.com',
+          login: {
+            endpoint: '/auth/admin/login',
+          },
           token: {
             class: NbAuthJWTToken,
             key: 'token',
           },
-          baseEndpoint: 'http://springboot-aws.arimnh62mr.us-east-2.elasticbeanstalk.com',
-          login: {
-            endpoint: '/auth/admin/login',
-          }
         }),
       ],
       forms: {
@@ -79,7 +85,9 @@ import {
     NbLayoutModule,
     NbEvaIconsModule,
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: NbAuthJWTInterceptor, multi: true},
+    { provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: () => false }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,17 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 // import { DashboardComponent } from './dashboard/dashboard.component';
-// import { ECommerceComponent } from './e-commerce/e-commerce.component';
+import { BloggersComponent } from './bloggers/bloggers.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
-    // {
-    //   path: 'dashboard',
-    //   component: ECommerceComponent,
-    // },
+    {
+      path: 'bloggers',
+      component: BloggersComponent,
+    },
     // {
     //   path: 'iot-dashboard',
     //   component: DashboardComponent,
@@ -75,6 +76,10 @@ const routes: Routes = [{
     // },
     {
       path: '',
+      component: WelcomeComponent,
+    },
+    {
+      path: '404',
       component: NotFoundComponent,
     },
   ],

@@ -5,6 +5,8 @@ import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
+import { WelcomeModule } from './welcome/welcome.module';
+import { BloggersModule } from './bloggers/bloggers.module' ;
 
 @NgModule({
   imports: [
@@ -12,6 +14,8 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
     ThemeModule,
     NbMenuModule,
     MiscellaneousModule,
+    WelcomeModule,
+    BloggersModule,
   ],
   declarations: [
     PagesComponent,
