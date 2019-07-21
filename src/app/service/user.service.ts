@@ -9,7 +9,7 @@ import { NbAuthService } from '@nebular/auth';
 
 
 
-const apiUrl = 'http://springboot-aws.arimnh62mr.us-east-2.elasticbeanstalk.com';
+const apiUrl = 'http://blogwebsite.us-east-2.elasticbeanstalk.com';
 
 @Injectable({ providedIn: 'root' })
 

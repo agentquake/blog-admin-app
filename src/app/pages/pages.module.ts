@@ -7,6 +7,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { WelcomeModule } from './welcome/welcome.module';
 import { BloggersModule } from './bloggers/bloggers.module' ;
+import { PostsModule } from './posts/posts.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { BloggersModule } from './bloggers/bloggers.module' ;
     MiscellaneousModule,
     WelcomeModule,
     BloggersModule,
+    PostsModule
   ],
   declarations: [
     PagesComponent,

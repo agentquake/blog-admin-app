@@ -5,11 +5,16 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from '../@core/utils/message.service';
 import { Blogger } from '../@core/data/blogger';
-import { NbAuthService } from '@nebular/auth';
+import { NbAuthService, NbAuthToken, } from '@nebular/auth';
+import { switchMap } from 'rxjs/operators';
 
 
 
-const apiUrl = 'http://springboot-aws.arimnh62mr.us-east-2.elasticbeanstalk.com';
+const apiUrl = 'http://blogwebsite.us-east-2.elasticbeanstalk.com';
+const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })};
 
 @Injectable({ providedIn: 'root' })
 
@@ -17,7 +22,17 @@ export class BloggerService {
     constructor(
         private http: HttpClient,
         private messageService: MessageService,
-        private auth: NbAuthService) { }
+        private auth: NbAuthService) {
+            console.log('service');
+            this.auth.getToken().pipe(
+                switchMap((token: NbAuthToken) => {
+                    const tk = token.getValue();
+                    console.log(tk);
+                    httpOptions.headers.set('Authorization', `Bearer ${token.getValue()}`);
+                    return of(null);
+                })
+            );
+        }
 
     // getMe(): Observable<User> {
     //     return this.http.get<User>(apiUrl + '/auth/admin/me')
@@ -37,22 +52,22 @@ export class BloggerService {
         }));
     }
 
-    banBlogger(bloggerEmail: string): boolean {
-        this.http.put(apiUrl + '/external/ban', {email: bloggerEmail, status: false})
-        .pipe(catchError(err => {
+    banBlogger(bloggerEmail: string): Observable<any> {
+        return this.http.get(apiUrl + '/external/ban?email=' + bloggerEmail.replace('@', '%40') + '&status=false')
+        .pipe(tap(_ => console.log('banned bloggers')),
+        catchError(err => {
             console.log(err);
-            return of(false);
+            return of(null);
         }));
-        return true;
     }
 
-    unbanBlogger(bloggerEmail: string): boolean {
-        this.http.put(apiUrl + '/external/ban', {email: bloggerEmail, status: true})
-        .pipe(catchError(err => {
+    unbanBlogger(bloggerEmail: string): Observable<any> {
+        return this.http.get(apiUrl + '/external/ban?email=' + bloggerEmail.replace('@', '%40') + '&status=true')
+        .pipe(tap(_ => console.log('unbanned bloggers')),
+        catchError(err => {
             console.log(err);
-            return of(false);
+            return of(null);
         }));
-        return true;
     }
 
     // getAll(): Blogger[] {

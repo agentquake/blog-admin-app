@@ -1,6 +1,6 @@
 export class Blogger {
     id: number;
-    fullname: string;
+    fullName: string;
     email: string;
     active: boolean;
 }

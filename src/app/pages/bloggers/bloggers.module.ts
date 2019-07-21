@@ -6,6 +6,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ThemeModule } from '../../@theme/theme.module';
 import { BloggersComponent } from './bloggers.component';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { BanButtonRenderComponent } from './banButton.render.component';
 
 @NgModule({
   imports: [
@@ -15,10 +16,14 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbInputModule,
     ThemeModule,
     Ng2SmartTableModule,
-    NbEvaIconsModule
+    NbEvaIconsModule,
+  ],
+  entryComponents: [
+    BanButtonRenderComponent
   ],
   declarations: [
     BloggersComponent,
+    BanButtonRenderComponent,
   ],
 })
 export class BloggersModule { }

@@ -26,7 +26,6 @@ import {
   NbSidebarModule,
   NbToastrModule,
   NbWindowModule,
-  NbCardModule,
 } from '@nebular/theme';
 
 @NgModule({
@@ -55,7 +54,7 @@ import {
       strategies: [
         NbPasswordAuthStrategy.setup({
           name: 'email',
-          baseEndpoint: 'http://springboot-aws.arimnh62mr.us-east-2.elasticbeanstalk.com',
+          baseEndpoint: 'http://blogwebsite.us-east-2.elasticbeanstalk.com',
           login: {
             endpoint: '/auth/admin/login',
           },
@@ -87,7 +86,8 @@ import {
   ],
   providers: [AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: NbAuthJWTInterceptor, multi: true},
-    { provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: () => false }],
+    { provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: () => false }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

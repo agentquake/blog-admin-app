@@ -6,6 +6,7 @@ import { PagesComponent } from './pages.component';
 import { BloggersComponent } from './bloggers/bloggers.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { PostsComponent } from './posts/posts.component';
 
 const routes: Routes = [{
   path: '',
@@ -15,15 +16,10 @@ const routes: Routes = [{
       path: 'bloggers',
       component: BloggersComponent,
     },
-    // {
-    //   path: 'iot-dashboard',
-    //   component: DashboardComponent,
-    // },
-    // {
-    //   path: 'layout',
-    //   loadChildren: () => import('./layout/layout.module')
-    //     .then(m => m.LayoutModule),
-    // },
+    {
+      path: 'posts',
+      component: PostsComponent,
+    },
     // {
     //   path: 'forms',
     //   loadChildren: () => import('./forms/forms.module')
