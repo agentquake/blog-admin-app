@@ -43,6 +43,14 @@ export class PostService {
                     return of(null);
                 }));
     }
+    getProduct(): Observable<any> {
+        return this.http.get('http://107.150.52.213/api-votf/api/product')
+            .pipe(tap(_ => console.log('REJECTED post')),
+                catchError(err => {
+                    console.log(err);
+                    return of(null);
+                }));
+    }
 
     // unbanBlogger(bloggerEmail: string): Observable<any> {
     //     return this.http.get(apiUrl + '/external/ban?email=' + bloggerEmail.replace('@', '%40') + '&status=true')

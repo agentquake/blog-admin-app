@@ -8,6 +8,7 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { WelcomeModule } from './welcome/welcome.module';
 import { BloggersModule } from './bloggers/bloggers.module' ;
 import { PostsModule } from './posts/posts.module';
+import { RecapModule } from './recap/recap.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { PostsModule } from './posts/posts.module';
     MiscellaneousModule,
     WelcomeModule,
     BloggersModule,
-    PostsModule
+    PostsModule,
+    RecapModule
   ],
   declarations: [
     PagesComponent,

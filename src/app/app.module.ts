@@ -54,9 +54,9 @@ import {
       strategies: [
         NbPasswordAuthStrategy.setup({
           name: 'email',
-          baseEndpoint: 'http://blogwebsite.us-east-2.elasticbeanstalk.com',
+          baseEndpoint: 'http://107.150.52.213/api-votf/api',
           login: {
-            endpoint: '/auth/admin/login',
+            endpoint: '/account/check-login',
           },
           token: {
             class: NbAuthJWTToken,

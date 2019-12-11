@@ -12,4 +12,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'clipboard-outline',
     link: '/pages/posts',
   },
+  {
+    title: 'Recap',
+    icon: 'clipboard-outline',
+    link: '/pages/recap'
+  }
 ];

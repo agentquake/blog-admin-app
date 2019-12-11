@@ -17,6 +17,8 @@ import { Blogger } from 'src/app/@core/data/blogger';
 })
 export class PostsComponent {
 
+  demo = null;
+
   settings = {
     actions: false,
     columns: {
@@ -122,6 +124,9 @@ export class PostsComponent {
       filterFieldKey: '#field#',
       dataKey: 'content',
     });
+    console.log('product');
+    this.service.getProduct().subscribe(data => console.log(data));
+    console.log('product');
     // this.getAll();
   }
 

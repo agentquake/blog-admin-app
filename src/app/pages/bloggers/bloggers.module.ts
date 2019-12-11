@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbIconModule, NbInputModule, NbTreeGridModule } from '@nebular/theme';
+import { NbIconModule, NbInputModule } from '@nebular/theme';
 import { NbCardModule } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
@@ -11,7 +11,6 @@ import { BanButtonRenderComponent } from './banButton.render.component';
 @NgModule({
   imports: [
     NbCardModule,
-    NbTreeGridModule,
     NbIconModule,
     NbInputModule,
     ThemeModule,

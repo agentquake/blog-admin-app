@@ -7,6 +7,7 @@ import { BloggersComponent } from './bloggers/bloggers.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PostsComponent } from './posts/posts.component';
+import { RecapComponent } from './recap/recap.component';
 
 const routes: Routes = [{
   path: '',
@@ -19,6 +20,10 @@ const routes: Routes = [{
     {
       path: 'posts',
       component: PostsComponent,
+    },
+    {
+      path: 'recap',
+      component: RecapComponent,
     },
     // {
     //   path: 'forms',
